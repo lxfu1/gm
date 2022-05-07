@@ -47,15 +47,15 @@ const onInvertDelete = () => {
           deleteBranchs.forEach((branch) => {
             exec(`git branch -D ${branch}`);
           });
-          console.log(`Deleted`);
         }
         pipeline.close();
+        exit(1);
       }
     );
   } else {
     printer(`There are no branches to delete`, "green");
+    exit(1);
   }
-  exit(1);
 };
 
 program
