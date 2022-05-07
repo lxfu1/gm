@@ -1,5 +1,5 @@
 const readline = require("readline");
-const { COLOR_MAP } = require("constants");
+const { COLOR_MAP } = require("./constants");
 
 const pipeline = readline.createInterface({
   input: process.stdin,
