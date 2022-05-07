@@ -19,7 +19,7 @@ const program = new commander.Command("gm");
 program.version(pkg.version);
 
 program
-  .command("l")
+  .command("b")
   .description("List all the branch")
   .option("-a", "all branch")
   .option("-r", "remote branch")
