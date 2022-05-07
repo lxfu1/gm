@@ -1,6 +1,6 @@
 {
   "name": "@lxfu/gm",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Git branch manger",
   "bin": "./bin/index.js",
   "scripts": {},
