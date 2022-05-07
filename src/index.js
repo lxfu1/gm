@@ -35,8 +35,7 @@ program
   .description("Delete all branchs exclude input [branchs] and  current branch")
   .action(onInvertDelete);
 
-program.command("a [path]").description("Git add").action(onAdd);
-
+program.command("a [file]").description("Git add").action(onAdd);
 program
   .command("cm <commit-info>")
   .description("Git commit information")
@@ -49,7 +48,7 @@ program
   .description("Git push origin")
   .action(onPushRemote);
 program.command("pl").description("Git pull").action(onPull);
-program.command("c <branch>").description("Git checkout").action(onCheckout);
+program.command("co <branch>").description("Git checkout").action(onCheckout);
 program
   .command("cb <branch>")
   .description("Git checkout -b")

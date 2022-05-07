@@ -50,9 +50,9 @@ const onInvertDelete = () => {
   }
 };
 
-const onAdd = (path) => {
-  if (path) {
-    exec(`git add ${path}`);
+const onAdd = (file) => {
+  if (file) {
+    exec(`git add ${file}`);
   } else {
     exec(`git add .`);
   }
