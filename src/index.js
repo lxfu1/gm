@@ -2,7 +2,7 @@ const shell = require("shelljs");
 const commander = require("commander");
 const { exec, exit } = shell;
 
-const { printer } = require("./utils");
+const { printer, pipeline } = require("./utils");
 
 const pkg = require("../package.json");
 
