@@ -1,0 +1,25 @@
+{
+  "name": "@lxfu/gm",
+  "version": "0.0.1",
+  "description": "Git branch manger",
+  "bin": "./bin/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxfu1/bm.git"
+  },
+  "keywords": [
+    "git",
+    "branch"
+  ],
+  "author": "lxfu1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lxfu1/bm/issues"
+  },
+  "homepage": "https://github.com/lxfu1/bm#readme",
+  "dependencies": {
+    "commander": "^9.2.0",
+    "shelljs": "^0.8.5"
+  }
+}
