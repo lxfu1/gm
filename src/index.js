@@ -29,7 +29,6 @@ program
   .command("d <branch-name>")
   .description("Delete one branch")
   .action(onDelete);
-
 program
   .command("D [branch-name]")
   .description("Delete all branchs exclude input [branchs] and  current branch")
@@ -42,12 +41,14 @@ program
   .action(onCommit);
 
 program.command("r <commit id>").description("Git reset").action(onReset);
+
 program.command("p").description("Git push").action(onPush);
 program
   .command("pr [branch]")
   .description("Git push origin")
   .action(onPushRemote);
 program.command("pl").description("Git pull").action(onPull);
+
 program.command("co <branch>").description("Git checkout").action(onCheckout);
 program
   .command("cb <branch>")
