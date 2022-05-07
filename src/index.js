@@ -1,62 +1,22 @@
-const shell = require("shelljs");
 const commander = require("commander");
-const { exec, exit } = shell;
-
-const { printer, pipeline } = require("./utils");
-
 const pkg = require("../package.json");
+const {
+  onList,
+  onDelete,
+  onInvertDelete,
+  onAdd,
+  onCommit,
+  onReset,
+  onPush,
+  onCheckout,
+  onPushRemote,
+  onPull,
+  onCheckoutB,
+} = require("./module");
 
 const program = new commander.Command("gm");
 
 program.version(pkg.version);
-
-const onList = (option) => {
-  const { r, a } = option;
-  if (a) {
-    exec(`git branch -a`);
-  } else if (r) {
-    exec(`git branch -r`);
-  } else {
-    exec(`git branch`);
-  }
-  exit(1);
-};
-
-const onDelete = (branchName) => {
-  exec(`git branch -D ${branchName}`);
-  exit(1);
-};
-
-const onInvertDelete = () => {
-  const stableBranchs = process.argv.splice(2);
-  const { stdout } = exec("git symbolic-ref --short -q HEAD");
-  stableBranchs.push(stdout);
-  const { stdout: localBranchs } = exec("git branch");
-  const deleteBranchs = localBranchs
-    .split("\n")
-    .map((item) => item.replace(/\s+/g, ""))
-    .filter(
-      (item) => item && !stableBranchs.includes(item) && !item.startsWith("*")
-    );
-  if (deleteBranchs.length > 0) {
-    printer(deleteBranchs, "green");
-    pipeline.question(
-      `Are you sure to delete the above branches(y/n)?`,
-      (check) => {
-        if (["y", "Y"].includes(check)) {
-          deleteBranchs.forEach((branch) => {
-            exec(`git branch -D ${branch}`);
-          });
-        }
-        pipeline.close();
-        exit(1);
-      }
-    );
-  } else {
-    printer(`There are no branches to delete`, "green");
-    exit(1);
-  }
-};
 
 program
   .command("l")
@@ -74,5 +34,25 @@ program
   .command("D [branch-name]")
   .description("Delete all branchs exclude input [branchs] and  current branch")
   .action(onInvertDelete);
+
+program.command("a [path]").description("Git add").action(onAdd);
+
+program
+  .command("cm <commit-info>")
+  .description("Git commit information")
+  .action(onCommit);
+
+program.command("r <commit id>").description("Git reset").action(onReset);
+program.command("p").description("Git push").action(onPush);
+program
+  .command("pr [branch]")
+  .description("Git push origin")
+  .action(onPushRemote);
+program.command("pl").description("Git pull").action(onPull);
+program.command("c <branch>").description("Git checkout").action(onCheckout);
+program
+  .command("cb <branch>")
+  .description("Git checkout -b")
+  .action(onCheckoutB);
 
 program.parse(process.argv);
