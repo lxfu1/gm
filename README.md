@@ -26,7 +26,7 @@ $ npm i -g @lxfu/gm
   - `gm pr` : 相当于 `git push origin HEAD`
   - `gm pr branch` : 相当于 `git push --set-upstream origin branch`
 - `gm pl` : 相当于 `git pull`
-- `gm co` : 相当于 `git checkout`
+- `gm co branch` : 相当于 `git checkout branch`
 - `gm cb branch` : 相当于 `git checkout -b branch`
 
 ## 更新日志
