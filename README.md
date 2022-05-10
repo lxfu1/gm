@@ -29,14 +29,3 @@ $ npm i -g @lxfu/gm
 - `gm co branch` : 相当于 `git checkout branch`
 - `gm cb branch` : 相当于 `git checkout -b branch`
 
-## 更新日志
-
-### 1.0.2
-
-- `l` 命令变更为 `b` 
-### 1.0.1
-
-新增 `a cm r p pr pl co cb` 命令
-### 1.0.0
-
-发布正式版本
