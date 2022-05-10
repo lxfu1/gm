@@ -40,7 +40,7 @@ program
   .description("Git commit information")
   .action(onCommit);
 
-program.command("r <commit id>").description("Git reset").action(onReset);
+program.command("r <commit-id>").description("Git reset").action(onReset);
 
 program.command("p").description("Git push").action(onPush);
 program
