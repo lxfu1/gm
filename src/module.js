@@ -74,8 +74,9 @@ const onCheckoutB = (branch) => {
   exit(1);
 };
 
-const onPush = () => {
-  exec(`git push`);
+const onPush = (option) => {
+  const { f } = option;
+  exec(`git push ${f ? "-f" : ""}`);
   exit(1);
 };
 
@@ -84,17 +85,23 @@ const onPull = () => {
   exit(1);
 };
 
-const onPushRemote = (branch) => {
+const onPushRemote = (branch, option) => {
+  const { f } = option;
   if (branch) {
-    exec(`git push --set-upstream origin ${branch}`);
+    exec(`git push --set-upstream origin ${branch} ${f ? "-f" : ""}`);
   } else {
-    exec(`git push origin HEAD`);
+    exec(`git push origin HEAD ${f ? "-f" : ""}`);
   }
   exit(1);
 };
 
 const onReset = (commitId) => {
   exec(`git reset ${commitId}`);
+  exit(1);
+};
+
+const onLog = (depth = 50) => {
+  exec(`git log --oneline -${depth}`);
   exit(1);
 };
 
@@ -110,4 +117,5 @@ module.exports = {
   onPushRemote,
   onPull,
   onCheckoutB,
+  onLog,
 };

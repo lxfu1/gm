@@ -12,6 +12,7 @@ const {
   onPushRemote,
   onPull,
   onCheckoutB,
+  onLog,
 } = require("./module");
 
 const program = new commander.Command("gm");
@@ -42,10 +43,15 @@ program
 
 program.command("r <commit-id>").description("Git reset").action(onReset);
 
-program.command("p").description("Git push").action(onPush);
+program
+  .command("p")
+  .description("Git push")
+  .option("-f", "force push")
+  .action(onPush);
 program
   .command("pr [branch]")
   .description("Git push origin")
+  .option("-f", "force push")
   .action(onPushRemote);
 program.command("pl").description("Git pull").action(onPull);
 
@@ -54,5 +60,10 @@ program
   .command("cb <branch>")
   .description("Git checkout -b")
   .action(onCheckoutB);
+
+program
+  .command("lg [depth]")
+  .description("Git log oneline -depth")
+  .action(onLog);
 
 program.parse(process.argv);
