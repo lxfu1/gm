@@ -22,9 +22,10 @@ $ npm i -g @lxfu/gm
 - `gm cm commitInfo` : 相当于 `git commit -m commitInfo`
 - `gm r commitId` : 相当于 `git reset commitId`
 - `gm p` : 相当于 `git push`
+  - `gm p -f`: 相当于 `git push -f`
 - `gm pr` : 用于没有远程分支的提交
-  - `gm pr` : 相当于 `git push origin HEAD`
-  - `gm pr branch` : 相当于 `git push --set-upstream origin branch`
+  - `gm pr [-f]` : 相当于 `git push origin HEAD`
+  - `gm pr branch [-f]` : 相当于 `git push --set-upstream origin branch`
 - `gm pl` : 相当于 `git pull`
 - `gm co branch` : 相当于 `git checkout branch`
 - `gm cb branch` : 相当于 `git checkout -b branch`
